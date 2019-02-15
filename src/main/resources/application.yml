@@ -1,0 +1,42 @@
+server:
+  port: 9090
+my:
+  bignumber: ${random.long}
+  number: ${random.int}
+  secret: ${random.value}
+  uuid: ${random.uuid}
+  servers:
+    #使用-的形式代表的是数组的形式
+     - dev.example.com
+     - another.example.comgfv][=]]]
+person-info:
+  name: Dyy
+  age: 12
+  address: TJ
+
+cache:
+  map:
+    a: 1
+    b: 2
+    c: 3
+
+person-list:
+    - name: Zzq
+      age: 12
+      address: DL
+    - name: Dyy
+      age: 11
+      address: TJ
+
+---
+spring:
+     profiles: dev | testing | default
+book-info:
+  book-name: "&lt;Java开发默认环境&gt;"
+  price: '1.11'
+---
+spring:
+     profiles: master & dev1
+book-info:
+  book-name: "&lt;Java开发正式环境&gt;"
+  price: '100.22'
