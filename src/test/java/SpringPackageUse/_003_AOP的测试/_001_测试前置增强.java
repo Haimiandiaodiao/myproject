@@ -44,6 +44,23 @@ public class _001_测试前置增强 {
     }
 
 
+    @Test
+    public void 异常的增强() {
+        MyThrowsAdvice myThrowsAdvice = new MyThrowsAdvice();
+        NaiveWaiter target = new NaiveWaiter();
+
+        ProxyFactory fac = new ProxyFactory();
+
+        fac.setTarget(target);
+        fac.addAdvice(myThrowsAdvice);
+        Object proxy1 = fac.getProxy();
+
+        NaiveWaiter proxy = (NaiveWaiter) proxy1;
+        proxy.greetTo("Dyy");
+        proxy.exceptionMethod();
+
+
+    }
 
     @Test
     public void 引介增强的测试(){

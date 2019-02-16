@@ -48,9 +48,9 @@ public class BeanAutoConfiguration {
     public School getSchool(){
         School school = new School();
 //        school.setName("天大");
-////        school.setAddress("天津津南区");
-////        school.setLevel(211);
-////        school.setMyInfo(a);
+//        school.setAddress("天津津南区");
+//        school.setLevel(211);
+//        school.setMyInfo(a);
         return school;
     }
 

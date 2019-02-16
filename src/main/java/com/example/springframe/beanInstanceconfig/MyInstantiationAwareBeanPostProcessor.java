@@ -25,7 +25,9 @@ public class MyInstantiationAwareBeanPostProcessor extends InstantiationAwareBea
     @Override
     public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
         System.out.println("--->调用【InstantiationAwareBeanPostProcessorAdapter】的postProcessBeforeInstantiation方法");
-        return super.postProcessBeforeInstantiation(beanClass, beanName);
+        Object o = super.postProcessBeforeInstantiation(beanClass, beanName);
+        return o;
+
     }
     @Override
     public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {

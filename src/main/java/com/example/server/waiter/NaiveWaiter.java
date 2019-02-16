@@ -23,4 +23,9 @@ public class NaiveWaiter implements Waiter {
         System.out.println("进入了抛出异常的方法");
         throw  new RuntimeException("抛出了异常");
     }
+
+
+    public void exceptionMethod(){
+        int a = 1/0;
+    }
 }

@@ -21,5 +21,12 @@ public class BeanWrapperUse {
         System.out.println(myInfo);
     }
 
-
+    @Test
+    public void name() {
+        short a = 1;
+        short b = 1;
+        byte c = 1+1;
+        System.out.println("a相加之前得多少"+a);
+        System.out.println("a相加之后得多少"+a);
+    }
 }

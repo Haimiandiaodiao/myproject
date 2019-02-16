@@ -34,9 +34,9 @@ import java.util.Map;
 //1.声明是一个rest的controller
 @RestController
 //2.开启启动注解功能
-//@ComponentScan(basePackages = "com.example"
-//        ,excludeFilters = {@ComponentScan.Filter(type = FilterType.REGEX, pattern = {"com\\.example\\.springframe\\.applicationstartrun\\.(ApplicationStartApplicationRunner|ApplicationStartCommandLineRunner)"})}
-//        )
+@ComponentScan(basePackages = "com.example"
+        ,excludeFilters = {@ComponentScan.Filter(type = FilterType.REGEX, pattern = {"com\\.example\\.springframe\\.applicationstartrun\\.(ApplicationStartApplicationRunner|ApplicationStartCommandLineRunner)"})}
+        )
 @SpringBootApplication
 public class SpringBootTestApplicaiton {
 
