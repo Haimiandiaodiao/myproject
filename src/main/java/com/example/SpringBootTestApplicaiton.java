@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.*;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -38,6 +35,8 @@ import java.util.Map;
         ,excludeFilters = {@ComponentScan.Filter(type = FilterType.REGEX, pattern = {"com\\.example\\.springframe\\.applicationstartrun\\.(ApplicationStartApplicationRunner|ApplicationStartCommandLineRunner)"})}
         )
 @SpringBootApplication
+//开启aspect的自动代理创建器功能
+@EnableAspectJAutoProxy
 public class SpringBootTestApplicaiton {
 
     @Autowired

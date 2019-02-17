@@ -1,4 +1,4 @@
-package SpringPackageUse;
+package _001_pringPackageUse;
 
 import com.example.springframe.applicationautobindconfig.MyInfo;
 import org.junit.Test;

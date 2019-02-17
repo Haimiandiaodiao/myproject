@@ -1,15 +1,12 @@
-package SpringPackageUse._003_AOP的测试;
+package _001_pringPackageUse._003_AOP的测试;
 
 import com.example.server.waiter.NaiveWaiter;
 import com.example.server.waiter.Waiter;
 import com.example.server.waiter.advice.*;
 import com.google.common.base.Joiner;
-import com.google.common.base.Splitter;
 import org.junit.Test;
 import org.springframework.aop.framework.ProxyFactory;
-import sun.awt.geom.AreaOp;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 

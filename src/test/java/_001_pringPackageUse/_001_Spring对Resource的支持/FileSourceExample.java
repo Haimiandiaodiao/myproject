@@ -1,4 +1,4 @@
-package SpringPackageUse._001_Spring对Resource的支持;
+package _001_pringPackageUse._001_Spring对Resource的支持;
 
 import com.example.SpringBootTestApplicaiton;
 import org.junit.Test;
