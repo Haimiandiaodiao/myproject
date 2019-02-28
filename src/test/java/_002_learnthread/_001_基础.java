@@ -1,8 +1,7 @@
 package _002_learnthread;
 
+import com.example.entity.exclude.Son;
 import org.junit.Test;
-import org.junit.experimental.categories.Categories;
-import sun.util.resources.th.CalendarData_th;
 
 /**
  * @Author Dyy <br/>
@@ -125,4 +124,13 @@ public class _001_基础 {
 
         while (true){}
     }
+
+   @Test
+    public void show111(){
+       Son son = new Son();
+       son.panduan();
+   }
+
+
+
 }

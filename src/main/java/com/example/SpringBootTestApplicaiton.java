@@ -1,25 +1,23 @@
 package com.example;
 
+import com.alibaba.fastjson.JSON;
 import com.example.entity.springbeanlifeshow.*;
 import com.example.springframe.applicationautobindconfig.MyInfo;
 import com.example.springframe.applicationautobindconfig.MyPrefixConfig;
 import com.example.springframe.applicationautobindconfig.ProfilesBookInfo;
-import com.example.springframe.componentscantype.MyCompontentScanFilter;
 import com.example.springframe.springevent.MailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.*;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -70,6 +68,14 @@ public class SpringBootTestApplicaiton {
         return "Hello World!";
     }
 
+    @RequestMapping("/niu")
+    String niu(HttpServletRequest request) {
+        String query = request.getParameter("query");
+        Map map = JSON.parseObject(query, Map.class);
+        System.out.println(query);
+
+        return "Hello World!";
+    }
 
     @RequestMapping(value = "/serversInfo",method = RequestMethod.GET)
     String serverInfo(){
