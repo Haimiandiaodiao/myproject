@@ -1,9 +1,15 @@
 package com.example.springframe.beanInstanceconfig;
 
 import com.example.entity.springbeanlifeshow.School;
+import com.example.springframe.mvc.MvcConfiguration;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+
+import java.util.List;
 
 /**
  * 自定义的BeanPostProcessor 实体投递处理器
@@ -39,6 +45,23 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
         if(bean.getClass() == School.class){
             System.out.println("--->BeanPost的ProcessAfter中捕捉到School属性下面打印他的属性");
             System.out.println(bean.toString());
+        }
+
+        //设置Sprimg的删除分号内容为false
+        if(bean.getClass() == RequestMappingHandlerMapping.class ){
+            if(beanName.equalsIgnoreCase("requestMappingHandlerMapping")){
+                RequestMappingHandlerMapping mapping = (RequestMappingHandlerMapping) bean;
+                mapping.setRemoveSemicolonContent(false);
+
+            }
+        }
+
+        //查看Springmvc默认加载的一些HttpMessageConverter
+        if(bean.getClass() == RequestMappingHandlerAdapter.class){
+            RequestMappingHandlerAdapter handlerAdapter = (RequestMappingHandlerAdapter) bean;
+            List<HttpMessageConverter<?>> messageConverters = handlerAdapter.getMessageConverters();
+            messageConverters.add(MvcConfiguration.registerMessageConverter());
+            System.out.println("");
         }
 
         return bean;

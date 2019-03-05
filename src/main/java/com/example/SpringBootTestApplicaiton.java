@@ -1,6 +1,7 @@
 package com.example;
 
 import com.alibaba.fastjson.JSON;
+import com.example.entity.User;
 import com.example.entity.springbeanlifeshow.*;
 import com.example.springframe.applicationautobindconfig.MyInfo;
 import com.example.springframe.applicationautobindconfig.MyPrefixConfig;
@@ -13,9 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.FilterType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -50,9 +49,9 @@ public class SpringBootTestApplicaiton {
     private List<MyInfo> personList;
     @Autowired
     private School school;
-    @Autowired
+    @Autowired(required = false)
     private A a;
-    @Autowired
+    @Autowired(required = false)
     private B b;
     //=======测试自定义属性编辑器
     @Autowired
@@ -132,9 +131,28 @@ public class SpringBootTestApplicaiton {
         return "成功";
     }
 
+    //使用@MatrixVariable进行参数封装
+    @RequestMapping(value = "/book/{bookId}",method = RequestMethod.GET)
+    String bookSend(@PathVariable String bookId, @MatrixVariable(value = "a",pathVar = "bookId") int a){
+        return "参数绑定";
+    }
+
+    @RequestMapping("/submitA")
+    String commandSubmit(A a){
+        return "命令方式提交参数";
+    }
+
     //3.启动spring的成功程序
     public static void main (String[] args){
         SpringApplication application = new SpringApplication(SpringBootTestApplicaiton.class);
         application.run(args);
     }
+
+    @RequestMapping(value = "/xmlSumbitUserInfo",method = RequestMethod.POST,produces = {"application/json"} )
+    @ResponseBody
+    User xmlSumbitUserInfo(@RequestBody User a){
+
+        return a;
+    }
+
 }
